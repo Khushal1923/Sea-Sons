@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-primary: #2B6B67;
+    --color-primary-dark: #1F4D4A;
+    --color-primary-light: #4A938E;
+    --color-sage: #84A98C;
+    --color-sage-light: #E8F0EC;
+    --color-amber: #D4A373;
+    --color-amber-light: #F4E8DB;
+    --color-cream: #FAF7F2;
+    --color-sand: #F2ECE1;
+    --color-dark: #121A20;
+    --color-card-bg: rgba(255, 255, 255, 0.85);
+    
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-subheading: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-cream);
+    color: var(--color-dark);
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, .font-serif-heading {
+    font-family: var(--font-heading);
+  }
+
+  .font-subheading {
+    font-family: var(--font-subheading);
+  }
+}
+
+/* Custom Arch Shape Utilities */
+.arch-card {
+  border-radius: 140px 140px 24px 24px;
+}
+
+.arch-image {
+  border-radius: 180px 180px 20px 20px;
+}
+
+.arch-window {
+  clip-path: ellipse(50% 50% at 50% 50%);
+}
+
+.arch-top {
+  border-top-left-radius: 120px;
+  border-top-right-radius: 120px;
+}
+
+/* Glowing Neon Lines matching the cafe's corridor & counter lights */
+.glow-strip-teal {
+  box-shadow: 0 0 15px rgba(43, 107, 103, 0.6), 0 0 30px rgba(43, 107, 103, 0.3);
+}
+
+.glow-strip-warm {
+  box-shadow: 0 0 12px rgba(254, 243, 199, 0.9), 0 0 25px rgba(254, 215, 170, 0.6);
+}
+
+.neon-quote-text {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(212, 163, 115, 0.6);
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-panel-dark {
+  background: rgba(18, 26, 32, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-nav {
+  background: rgba(250, 247, 242, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(43, 107, 103, 0.1);
+}
+
+/* Hero Video Mask Overlay */
+.hero-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(18, 26, 32, 0.65) 0%,
+    rgba(18, 26, 32, 0.4) 40%,
+    rgba(18, 26, 32, 0.8) 85%,
+    rgba(250, 247, 242, 1) 100%
+  );
+}
+
+/* Custom Keyframe Animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.8; filter: drop-shadow(0 0 8px rgba(43, 107, 103, 0.4)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 18px rgba(43, 107, 103, 0.8)); }
+}
+
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #2B6B67;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1F4D4A;
+}
