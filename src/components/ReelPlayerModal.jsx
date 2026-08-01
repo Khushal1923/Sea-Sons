@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, ExternalLink, Play, Sparkles } from 'lucide-react';
+import { X, ExternalLink, Sparkles } from 'lucide-react';
 import InstagramIcon from './icons/InstagramIcon';
 import { CAFE_INFO } from '../data/cafeData';
 
@@ -39,16 +39,16 @@ export default function ReelPlayerModal({ isOpen, onClose }) {
         {/* Video Player Box */}
         <div className="relative aspect-[9/16] w-full bg-black flex items-center justify-center overflow-hidden">
           
-          {/* Instagram Embed iframe */}
+          {/* Instagram Embed iframe with correct DOM prop */}
           <iframe
             src="https://www.instagram.com/reel/DbeosVPIskw/embed"
             className="w-full h-full border-0"
             title="Sea~Sons Cafe Instagram Reel"
-            allowTransparency={true}
+            allowtransparency="true"
             allow="encrypted-media"
           />
 
-          {/* Backup HTML5 player fallback in case Instagram embed is blocked by browser adblockers */}
+          {/* Backup HTML5 player fallback */}
           <div className="absolute bottom-4 left-4 right-4 p-3 rounded-2xl bg-black/70 backdrop-blur-md border border-white/20 flex items-center justify-between text-xs">
             <span className="text-white/80 flex items-center gap-1.5 font-medium">
               <Sparkles className="w-4 h-4 text-amber-300" />
