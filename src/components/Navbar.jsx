@@ -26,26 +26,26 @@ export default function Navbar({ onOpenReservation, trayCount, onOpenTray }) {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'glass-nav py-2 shadow-md' : 'bg-gradient-to-b from-black/90 via-black/60 to-transparent py-2.5 text-white'
+    <header className={`fixed top-0 left-0 right-0 z-50 w-full max-w-full overflow-hidden transition-all duration-300 ${
+      scrolled ? 'glass-nav py-2 shadow-md' : 'bg-gradient-to-b from-black/90 via-black/60 to-transparent py-3 text-white'
     }`}>
       <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center justify-between h-12 sm:h-16">
           
-          {/* Brand Logo - Compact on mobile to prevent edge cut-offs */}
-          <a href="#home" className="flex items-center gap-2 group shrink">
-            <div className={`w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shrink-0 ${
+          {/* Brand Logo - Aligned cleanly on mobile & desktop */}
+          <a href="#home" className="flex items-center gap-2 sm:gap-3 group shrink-0">
+            <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shrink-0 ${
               scrolled ? 'bg-[#2B6B67] text-white shadow-md' : 'bg-white/20 backdrop-blur-md text-white border border-white/30'
             }`}>
-              <Coffee className="w-4 h-4 sm:w-6 sm:h-6" />
+              <Coffee className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
-            <div className="min-w-0">
-              <span className={`text-base sm:text-2xl font-bold tracking-tight font-serif-heading block leading-none truncate ${
+            <div className="flex flex-col justify-center">
+              <span className={`text-base sm:text-2xl font-bold tracking-tight font-serif-heading block leading-none ${
                 scrolled ? 'text-[#1E293B]' : 'text-white'
               }`}>
                 Sea~Sons
               </span>
-              <span className={`text-[8px] sm:text-[10px] tracking-wider uppercase font-semibold block mt-0.5 truncate ${
+              <span className={`text-[9px] sm:text-[10px] tracking-wider uppercase font-semibold block mt-0.5 ${
                 scrolled ? 'text-[#2B6B67]' : 'text-amber-300'
               }`}>
                 Cafe N Restro
@@ -99,29 +99,29 @@ export default function Navbar({ onOpenReservation, trayCount, onOpenTray }) {
             </a>
           </div>
 
-          {/* Mobile Action Controls - Properly padded & non-overflowing */}
+          {/* Mobile Action Controls - Aligned & Padded */}
           <div className="flex items-center gap-1.5 lg:hidden shrink-0">
             {trayCount > 0 && (
               <button
                 onClick={onOpenTray}
-                className="flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-bold bg-[#84A98C] text-white shadow"
+                className="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-[11px] font-bold bg-[#84A98C] text-white shadow"
               >
-                <ShoppingBag className="w-3 h-3" />
+                <ShoppingBag className="w-3.5 h-3.5" />
                 <span>({trayCount})</span>
               </button>
             )}
 
             <button
               onClick={onOpenReservation}
-              className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-[#2B6B67] text-white shadow"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-[#2B6B67] text-white shadow active:scale-95"
             >
-              <Calendar className="w-3 h-3" />
+              <Calendar className="w-3.5 h-3.5" />
               <span>Book</span>
             </button>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-1.5 rounded-lg transition-colors ${
+              className={`p-1.5 rounded-xl transition-colors ${
                 scrolled ? 'text-slate-800 hover:bg-slate-100' : 'text-white hover:bg-white/20'
               }`}
               aria-label="Toggle menu"

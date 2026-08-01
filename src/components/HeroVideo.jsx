@@ -44,7 +44,7 @@ export default function HeroVideo({ onOpenReservation, onOpenReelModal }) {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16">
+    <section id="home" className="relative min-h-screen w-full max-w-full overflow-hidden flex items-center justify-center pt-20 pb-16">
       
       {/* Background HTML5 Video Loop */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-[#121A20]">
@@ -56,7 +56,7 @@ export default function HeroVideo({ onOpenReservation, onOpenReelModal }) {
           muted={isMuted}
           playsInline
           poster="/images/arch-corridor.jpg"
-          className="w-full h-full object-cover scale-105 transition-transform duration-1000"
+          className="w-full h-full object-cover transition-transform duration-1000"
         >
           <source src={videoSrc} type="video/mp4" />
           <source src={CAFE_INFO.heroVideoMp4} type="video/mp4" />
@@ -67,8 +67,8 @@ export default function HeroVideo({ onOpenReservation, onOpenReelModal }) {
         <div className="absolute inset-0 hero-overlay z-10 pointer-events-none" />
 
         {/* Ambient Glow Effects */}
-        <div className="absolute top-1/4 left-1/4 w-80 h-80 sm:w-96 sm:h-96 bg-[#2B6B67]/25 rounded-full blur-3xl pointer-events-none animate-pulse" />
-        <div className="absolute bottom-1/3 right-1/4 w-72 h-72 sm:w-80 sm:h-80 bg-[#D4A373]/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 sm:w-96 sm:h-96 bg-[#2B6B67]/25 rounded-full blur-3xl pointer-events-none animate-pulse" />
+        <div className="absolute bottom-1/3 right-1/4 w-60 h-60 sm:w-80 sm:h-80 bg-[#D4A373]/20 rounded-full blur-3xl pointer-events-none" />
       </div>
 
       {/* Floating Video Control Bar (Bottom Right) */}
@@ -99,7 +99,7 @@ export default function HeroVideo({ onOpenReservation, onOpenReelModal }) {
       </div>
 
       {/* Hero Seamless Floating Content */}
-      <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-10 sm:py-16">
+      <div className="relative z-20 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-10 sm:py-16">
         
         {/* Rating & Pure Veg Badge */}
         <div className="inline-flex items-center gap-2 sm:gap-3 px-4 py-2 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white text-xs sm:text-sm font-medium mb-6 shadow-lg">
