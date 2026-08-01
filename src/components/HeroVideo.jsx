@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Volume2, VolumeX, Play, Pause, Star, Calendar, Utensils, ArrowRight, Video } from 'lucide-react';
 import InstagramIcon from './icons/InstagramIcon';
 import { CAFE_INFO } from '../data/cafeData';
@@ -6,7 +6,24 @@ import { CAFE_INFO } from '../data/cafeData';
 export default function HeroVideo({ onOpenReservation, onOpenReelModal }) {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
+  const [videoSrc, setVideoSrc] = useState(CAFE_INFO.heroVideoMp4);
   const videoRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // On mobile screens (< 640px), load the cropped video with top text cut off.
+      // On desktop screens, keep the original desktop video.
+      if (window.innerWidth < 640) {
+        setVideoSrc(CAFE_INFO.heroVideoCroppedMp4);
+      } else {
+        setVideoSrc(CAFE_INFO.heroVideoMp4);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -29,27 +46,24 @@ export default function HeroVideo({ onOpenReservation, onOpenReelModal }) {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16">
       
-      {/* Background HTML5 Video Loop with Mobile Crop/Scale to hide burnt-in video text */}
+      {/* Background HTML5 Video Loop */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-[#121A20]">
         <video
+          key={videoSrc}
           ref={videoRef}
           autoPlay
           loop
           muted={isMuted}
           playsInline
           poster="/images/arch-corridor.jpg"
-          /* 
-            On mobile (< sm), scale-135 and translate-y-10 shifts the video down 
-            and crops out the burnt-in "Nashik Cafe you shouldn't miss" text from the top of the video!
-          */
-          className="w-full h-full object-cover scale-[1.35] sm:scale-105 translate-y-10 sm:translate-y-0 transition-all duration-700 object-[center_75%] sm:object-center"
+          className="w-full h-full object-cover scale-105 transition-transform duration-1000"
         >
+          <source src={videoSrc} type="video/mp4" />
           <source src={CAFE_INFO.heroVideoMp4} type="video/mp4" />
-          <source src={CAFE_INFO.secondaryVideoMp4} type="video/mp4" />
           Your browser does not support HTML5 video playback.
         </video>
 
-        {/* Seamless Overlay Tint */}
+        {/* Seamless Cinematic Gradient Overlay */}
         <div className="absolute inset-0 hero-overlay z-10 pointer-events-none" />
 
         {/* Ambient Glow Effects */}
@@ -100,7 +114,7 @@ export default function HeroVideo({ onOpenReservation, onOpenReelModal }) {
         </div>
 
         {/* Grand Seamless Headline */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white font-serif-heading tracking-tight leading-[1.1] mb-6 drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white font-serif-heading tracking-tight leading-[1.1] mb-6 drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
           Sea~Sons <span className="italic font-light text-amber-200 block sm:inline">Cafe & Restro</span>
         </h1>
 

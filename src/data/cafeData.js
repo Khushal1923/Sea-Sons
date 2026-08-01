@@ -8,8 +8,10 @@ export const CAFE_INFO = {
   instagramHandle: "@sea_sons_cafe_n_restro",
   heroVideoReelUrl: "https://www.instagram.com/reel/DbeosVPIskw/?igsh=eTQzZmRiMmM2cDRi",
   heroVideoEmbedId: "DbeosVPIskw",
-  // Actual Instagram Reel video MP4 downloaded directly into public assets
+  // Original Reel video for Desktop
   heroVideoMp4: "/videos/hero-reel.mp4",
+  // Top 22% cropped video for Mobile (removes "Nashik Cafe you shouldn't miss" text overlay)
+  heroVideoCroppedMp4: "/videos/hero-reel-cropped.mp4",
   secondaryVideoMp4: "https://assets.mixkit.co/videos/preview/mixkit-barista-making-a-latte-art-coffee-41315-large.mp4",
   phone: "+91 98230 44555",
   rating: 4.8,
